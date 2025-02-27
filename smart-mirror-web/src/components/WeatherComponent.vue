@@ -37,6 +37,8 @@
 
 <script>
 import { onBeforeUnmount } from 'vue';
+import { Lunar } from 'lunar-javascript';
+
 import axios from 'axios';
 
 export default {
@@ -140,7 +142,13 @@ export default {
             return iconMap[weatherDescription] || require('@/assets/W44.png');
         },
         updateLunarDate() {
-            this.lunarDate = `农历`;
+            const now = new Date();
+            const lunar = Lunar.fromDate(now); 
+            this.lunarDate =lunar.getYearInGanZhi() + "年" +lunar.getMonthInChinese()+ "月" + lunar.getDayInChinese();
+            const jq = lunar.getCurrentJieQi();
+            if(jq){
+                this.lunarDate += "("+ jq +")" ;
+            }
         },
         updateTimeAndDate() {
             this.currentTime = new Date().toLocaleTimeString('zh-CN', { hour12: false });
@@ -209,7 +217,14 @@ export default {
     font-size: 45px;
 }
 
-.time-and-day,
+.time-and-day {
+    font-size: 40px;
+}
+
+.time-and-day .time {
+    padding-right: 10px;
+}
+
 .date-and-lunar {
     display: flex;
     flex-direction: column;
@@ -217,8 +232,6 @@ export default {
     text-align: center;
 }
 
-.time,
-.day-of-week,
 .date,
 .lunar-date {
     font-size: 24px;
