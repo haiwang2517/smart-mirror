@@ -3,26 +3,15 @@ server:
   servlet:
     context-path: /
 
-
 spring:
   application:
     name: smart-mirror
   profiles:
     active: dev
 
-
-
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
-  #  #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: cn.haiyinlong.smart.mirror.infrastructure.dao.entity
-  global-config:
-    db-config:
-      id-type: AUTO
-      logic-delete-value: -1
-      logic-not-delete-value: 0
-    banner: false
-  #原生配置
+  type-aliases-package: cn.haiyinlong.smart.mirror.infrastructure.dao.entity
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false

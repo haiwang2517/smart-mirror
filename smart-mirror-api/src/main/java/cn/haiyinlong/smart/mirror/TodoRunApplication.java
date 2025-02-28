@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 2025/02/27 18:04
  **/
 @SpringBootApplication
-@MapperScan("cn.haiyinlong.smart.mirror.infrastructure.dao")
+@MapperScan({"cn.haiyinlong.smart.mirror.infrastructure.dao"})
 public class TodoRunApplication {
     public static void main(final String[] args) {
         SpringApplication.run(TodoRunApplication.class, args);
