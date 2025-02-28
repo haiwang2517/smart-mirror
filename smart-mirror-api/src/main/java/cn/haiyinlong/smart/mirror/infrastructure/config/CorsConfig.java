@@ -1,4 +1,4 @@
-package cn.haiyinlong.smart.mirror.config;
+package cn.haiyinlong.smart.mirror.infrastructure.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

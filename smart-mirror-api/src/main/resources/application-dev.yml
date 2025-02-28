@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:D:/software/h2-2024-07-15/db.mv.db
+    username: sa
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

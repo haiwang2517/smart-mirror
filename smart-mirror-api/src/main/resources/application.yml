@@ -11,10 +11,11 @@ spring:
     active: dev
 
 
+
 mybatis-plus:
-  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  mapper-locations: classpath*:mapper/*.xml
   #  #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: cn.haiyinong.**.entity
+  typeAliasesPackage: cn.haiyinlong.smart.mirror.infrastructure.dao.entity
   global-config:
     db-config:
       id-type: AUTO

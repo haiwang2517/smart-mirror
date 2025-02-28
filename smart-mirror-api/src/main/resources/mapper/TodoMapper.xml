@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.haiyinlong.smart.mirror.infrastructure.dao.TodoMapper">
+
+    <resultMap id="BaseResultMap" type="cn.haiyinlong.smart.mirror.infrastructure.dao.entity.TodoEntity">
+        <id property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="summary" column="SUMMARY" jdbcType="VARCHAR"/>
+        <result property="repeatPeriodType" column="REPEAT_PERIOD_TYPE" jdbcType="INTEGER"/>
+        <result property="repeatPeriodValue" column="REPEAT_PERIOD_VALUE" jdbcType="INTEGER"/>
+        <result property="targetDateType" column="TARGET_DATE_TYPE" jdbcType="INTEGER"/>
+        <result property="targetDateYear" column="TARGET_DATE_YEAR" jdbcType="VARCHAR"/>
+        <result property="targetDateMonth" column="TARGET_DATE_MONTH" jdbcType="VARCHAR"/>
+        <result property="targetDateDay" column="TARGET_DATE_DAY" jdbcType="VARCHAR"/>
+        <result property="delFlag" column="DEL_FLAG" jdbcType="INTEGER"/>
+        <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,SUMMARY,DEL_FLAG,
+        CREATE_TIME,UPDATE_TIME,REPEAT_PERIOD_TYPE,
+        REPEAT_PERIOD_VALUE,TARGET_DATE_TYPE,TARGET_DATE_YEAR,
+        TARGET_DATE_MONTH,TARGET_DATE_DAY
+    </sql>
+</mapper>

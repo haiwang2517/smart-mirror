@@ -1,4 +1,4 @@
-package cn.haiyinlong.smart.mirror.dto;
+package cn.haiyinlong.smart.mirror.application.dto;
 
 import lombok.Data;
 

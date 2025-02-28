@@ -1,8 +1,8 @@
-package cn.haiyinlong.smart.mirror.service;
+package cn.haiyinlong.smart.mirror.application;
 
-import cn.haiyinlong.smart.mirror.dto.FutureTaskVO;
-import cn.haiyinlong.smart.mirror.dto.TodayTaskVO;
-import cn.haiyinlong.smart.mirror.dto.TodoTaskVO;
+import cn.haiyinlong.smart.mirror.application.dto.FutureTaskVO;
+import cn.haiyinlong.smart.mirror.application.dto.TodayTaskVO;
+import cn.haiyinlong.smart.mirror.application.dto.TodoTaskVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +16,7 @@ import java.util.List;
 **/
 @Service
 @RequiredArgsConstructor
-public class TodoQueryServiceImpl implements TodoQueryService{
-    @Override
+public class TodoQueryService {
     public TodoTaskVO query() {
         List<TodayTaskVO> todayTasks = new ArrayList<>();
         todayTasks.add(new TodayTaskVO( "去爬南山", 1));
@@ -30,5 +29,13 @@ public class TodoQueryServiceImpl implements TodoQueryService{
         todoTaskVO.setFutureTasks(futureTasks);
         todoTaskVO.setTodayTasks(todayTasks);
         return todoTaskVO;
+    }
+
+    public void queryTodo(Long id) {
+
+    }
+
+    public void pageTodo(Integer pageNum, Integer pageSize, String summary) {
+
     }
 }
