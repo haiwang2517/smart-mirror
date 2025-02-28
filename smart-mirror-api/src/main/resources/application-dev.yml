@@ -1,14 +1,12 @@
 spring:
   datasource:
-    url: jdbc:h2:file:D:/software/h2-2024-07-15/db.mv.db
+    url: jdbc:h2:file:~/todo
     username: sa
     driver-class-name: org.h2.Driver
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql
 
 mybatis-plus:
-  mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: cn.haiyinlong.smart.mirror.infrastructure.dao.entity
   configuration:
-    map-underscore-to-camel-case: true
-    cache-enabled: false
-    call-setters-on-nulls: true
-    jdbc-type-for-null: 'null'
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
