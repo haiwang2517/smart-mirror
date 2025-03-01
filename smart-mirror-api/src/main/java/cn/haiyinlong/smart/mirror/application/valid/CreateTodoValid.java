@@ -29,7 +29,7 @@ public class CreateTodoValid {
             throw new IllegalArgumentException("targetDateDay不能为空");
         }
         if (createTodo.getRepeatPeriodValue() != null
-            && (createTodo.getRepeatPeriodType() != null || createTodo.getRepeatPeriodType().isEmpty())) {
+            && (createTodo.getRepeatPeriodType() == null || createTodo.getRepeatPeriodType().isEmpty())) {
             throw new IllegalArgumentException("repeatPeriodType不能为空");
         }
         if (createTodo.getRepeatPeriodType() != null

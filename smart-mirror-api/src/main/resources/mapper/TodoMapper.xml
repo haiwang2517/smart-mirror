@@ -6,9 +6,9 @@
     <resultMap id="BaseResultMap" type="cn.haiyinlong.smart.mirror.infrastructure.dao.entity.TodoEntity">
         <id property="id" column="ID" jdbcType="INTEGER"/>
         <result property="summary" column="SUMMARY" jdbcType="VARCHAR"/>
-        <result property="repeatPeriodType" column="REPEAT_PERIOD_TYPE" jdbcType="INTEGER"/>
+        <result property="repeatPeriodType" column="REPEAT_PERIOD_TYPE" jdbcType="VARCHAR"/>
         <result property="repeatPeriodValue" column="REPEAT_PERIOD_VALUE" jdbcType="INTEGER"/>
-        <result property="targetDateType" column="TARGET_DATE_TYPE" jdbcType="INTEGER"/>
+        <result property="targetDateType" column="TARGET_DATE_TYPE" jdbcType="VARCHAR"/>
         <result property="targetDateYear" column="TARGET_DATE_YEAR" jdbcType="VARCHAR"/>
         <result property="targetDateMonth" column="TARGET_DATE_MONTH" jdbcType="VARCHAR"/>
         <result property="targetDateDay" column="TARGET_DATE_DAY" jdbcType="VARCHAR"/>
@@ -18,9 +18,19 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        ID,SUMMARY,DEL_FLAG,
+        ID
+        ,SUMMARY,DEL_FLAG,
         CREATE_TIME,UPDATE_TIME,REPEAT_PERIOD_TYPE,
         REPEAT_PERIOD_VALUE,TARGET_DATE_TYPE,TARGET_DATE_YEAR,
         TARGET_DATE_MONTH,TARGET_DATE_DAY
     </sql>
+    <select id="queryList" resultType="cn.haiyinlong.smart.mirror.infrastructure.dao.entity.TodoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from TODO
+        where DEL_FLAG = 0
+        <if test="summary != null and summary != ''">
+            and SUMMARY like concat('%',#{summary},'%')
+        </if>
+    </select>
 </mapper>

@@ -29,7 +29,7 @@ public class UpdateTodoValid {
             throw new IllegalArgumentException("targetDateDay不能为空");
         }
         if (updateTodo.getRepeatPeriodValue() != null
-            && (updateTodo.getRepeatPeriodType() != null || updateTodo.getRepeatPeriodType().isEmpty())) {
+            && (updateTodo.getRepeatPeriodType() == null || updateTodo.getRepeatPeriodType().isEmpty())) {
             throw new IllegalArgumentException("repeatPeriodType不能为空");
         }
         if (updateTodo.getRepeatPeriodType() != null

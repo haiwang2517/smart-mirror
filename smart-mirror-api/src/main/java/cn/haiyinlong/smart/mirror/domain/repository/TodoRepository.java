@@ -1,5 +1,7 @@
 package cn.haiyinlong.smart.mirror.domain.repository;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 import cn.haiyinlong.smart.mirror.domain.model.Todo;
 
 /**
@@ -16,4 +18,6 @@ public interface TodoRepository {
     Todo getTodo(Long id);
 
     void update(Todo todo);
+
+    Page<Todo> pageTodo(Integer pageNum, Integer pageSize, String summary);
 }

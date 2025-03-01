@@ -3,6 +3,8 @@ package cn.haiyinlong.smart.mirror.infrastructure.repository;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 import cn.haiyinlong.smart.mirror.domain.model.Todo;
 import cn.haiyinlong.smart.mirror.infrastructure.converter.TodoEntityToTodoConverter;
 import cn.haiyinlong.smart.mirror.infrastructure.converter.TodoToTodoEntityConverter;
@@ -49,5 +51,14 @@ public class TodoRepository implements cn.haiyinlong.smart.mirror.domain.reposit
     public void update(final Todo todo) {
         final TodoEntity todoEntity = TodoToTodoEntityConverter.INSTANCE.convert(todo);
         todoMapper.updateById(todoEntity);
+    }
+
+    @Override
+    public Page<Todo> pageTodo(Integer pageNum, Integer pageSize, String summary) {
+        Page<TodoEntity> page = new Page<>(pageNum, pageSize);
+        Page<TodoEntity> pageList = todoMapper.queryList(page, summary);
+        Page<Todo> result = new Page<>(pageList.getCurrent(), pageList.getSize(), pageList.getTotal());
+        result.setRecords(TodoEntityToTodoConverter.INSTANCE.convert(pageList.getRecords()));
+        return result;
     }
 }

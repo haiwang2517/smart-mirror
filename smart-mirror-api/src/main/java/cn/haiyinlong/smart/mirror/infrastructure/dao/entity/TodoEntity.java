@@ -21,11 +21,11 @@ public class TodoEntity {
 
     private String summary;
 
-    private Integer repeatPeriodType;
+    private String repeatPeriodType;
 
     private Integer repeatPeriodValue;
 
-    private Integer targetDateType;
+    private String targetDateType;
 
     private String targetDateYear;
 
@@ -38,6 +38,11 @@ public class TodoEntity {
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;
+
+    public TodoEntity() {
+        this.delFlag = 0;
+        this.createTime = LocalDateTime.now();
+    }
 
     public void delete() {
         this.delFlag = 1;
