@@ -14,7 +14,7 @@
             <ul>
                 <li v-for="(task, index) in futureTasks" :key="index" class="task-item">
                     <span v-if="task.priority" class="priority-dot"></span>
-                    <span>{{ task.summary }} <span class="due-date">{{ task.dueDate }}</span></span>
+                    <span>{{ task.summary }} <span class="due-date">{{ task.countdown }} 天</span></span>
                 </li>
             </ul>
         </div>

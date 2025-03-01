@@ -1,15 +1,16 @@
 package cn.haiyinlong.smart.mirror.application;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import cn.haiyinlong.smart.mirror.application.assmber.TodoTaskVoAssembly;
 import cn.haiyinlong.smart.mirror.application.dto.TodoTaskVO;
 import cn.haiyinlong.smart.mirror.domain.model.TodoCountdown;
 import cn.haiyinlong.smart.mirror.domain.repository.TodoCountdownRepository;
-import cn.haiyinlong.smart.mirror.domain.repository.TodoRepository;
+import cn.haiyinlong.smart.mirror.domain.service.CalculateTodoCountdownService;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -22,21 +23,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TodoCountdownService {
     private final TodoCountdownRepository todoCountdownRepository;
-    private final TodoRepository todoRepository;
+    private final CalculateTodoCountdownService calculateTodoCountdownService;
 
     public TodoTaskVO query() {
         Set<TodoCountdown> todoCountdownList = todoCountdownRepository.queryTodoCountdown();
-        TodoTaskVO todoTaskVO = new TodoTaskVO();
         if (CollectionUtils.isEmpty(todoCountdownList)) {
-            return todoTaskVO;
+            todoCountdownList = new HashSet<>(calculateTodoCountdownService.calculate());
         }
-        List<TodoCountdown> todayCountDownList =
-            todoCountdownList.stream().filter(countdownItem -> countdownItem.getCountdown() == 0).toList();
-        List<TodoCountdown> futureCountDownList =
-            todoCountdownList.stream().filter(countdownItem -> countdownItem.getCountdown() > 0).toList();
-        todoTaskVO.setFutureTasks(futureCountDownList);
-        todoTaskVO.setTodayTasks(todayCountDownList);
-        return todoTaskVO;
+        return TodoTaskVoAssembly.assembly(todoCountdownList);
     }
 
 }
