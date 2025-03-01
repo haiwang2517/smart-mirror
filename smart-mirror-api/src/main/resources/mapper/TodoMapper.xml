@@ -33,4 +33,10 @@
             and SUMMARY like concat('%',#{summary},'%')
         </if>
     </select>
+    <select id="queryAll" resultType="cn.haiyinlong.smart.mirror.infrastructure.dao.entity.TodoEntity">
+        select
+        <include refid="Base_Column_List"/>
+        from TODO
+        where DEL_FLAG = 0
+    </select>
 </mapper>

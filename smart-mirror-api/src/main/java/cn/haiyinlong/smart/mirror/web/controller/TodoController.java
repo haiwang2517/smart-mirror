@@ -2,7 +2,7 @@ package cn.haiyinlong.smart.mirror.web.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import cn.haiyinlong.smart.mirror.application.TodoQueryService;
+import cn.haiyinlong.smart.mirror.application.TodoCountdownService;
 import cn.haiyinlong.smart.mirror.application.TodoService;
 import cn.haiyinlong.smart.mirror.application.dto.*;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +17,12 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class TodoController {
-    private final TodoQueryService todoQueryService;
+    private final TodoCountdownService todoCountdownService;
     private final TodoService todoService;
 
     @GetMapping("/tasks")
     public TodoTaskVO getTasks() {
-        return todoQueryService.query();
+        return todoCountdownService.query();
     }
 
     @PostMapping("/todo")

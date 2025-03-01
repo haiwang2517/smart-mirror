@@ -16,6 +16,8 @@ import cn.haiyinlong.smart.mirror.application.valid.CreateTodoValid;
 import cn.haiyinlong.smart.mirror.application.valid.UpdateTodoValid;
 import cn.haiyinlong.smart.mirror.domain.factory.TodoFactory;
 import cn.haiyinlong.smart.mirror.domain.model.Todo;
+import cn.haiyinlong.smart.mirror.domain.model.TodoCountdown;
+import cn.haiyinlong.smart.mirror.domain.repository.TodoCountdownRepository;
 import cn.haiyinlong.smart.mirror.domain.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -30,6 +32,7 @@ import lombok.RequiredArgsConstructor;
 public class TodoService {
 
     private final TodoRepository todoRepository;
+    private final TodoCountdownRepository todoCountdownRepository;
 
     @Transactional(rollbackFor = Exception.class)
     public void createTodo(final CreateTodo createTodo) {
@@ -37,6 +40,8 @@ public class TodoService {
         CreateTodoValid.valid(createTodo);
         final Todo todo = TodoFactory.createTodo(createTodo);
         todoRepository.save(todo);
+        TodoCountdown todoCountdown = todo.calculateCountdown();
+        todoCountdownRepository.save(todoCountdown);
     }
 
     @Transactional(rollbackFor = Exception.class)

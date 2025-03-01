@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class IntervalRule {
     /**
-     * 秒、分钟、小时、日、周、月、年、季度
+     * 日、周、月、年、季度
      */
     private PeriodEnum periodType;
 

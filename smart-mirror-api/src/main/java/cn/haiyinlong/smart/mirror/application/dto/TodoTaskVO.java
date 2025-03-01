@@ -1,7 +1,9 @@
 package cn.haiyinlong.smart.mirror.application.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import cn.haiyinlong.smart.mirror.domain.model.TodoCountdown;
 import lombok.Data;
 
 /**
@@ -12,6 +14,11 @@ import lombok.Data;
  **/
 @Data
 public class TodoTaskVO {
-    private List<TodayTaskVO> todayTasks;
-    private List<FutureTaskVO> futureTasks;
+    private List<TodoCountdown> todayTasks;
+    private List<TodoCountdown> futureTasks;
+
+    public TodoTaskVO() {
+        this.todayTasks = new ArrayList<>();
+        this.futureTasks = new ArrayList<>();
+    }
 }

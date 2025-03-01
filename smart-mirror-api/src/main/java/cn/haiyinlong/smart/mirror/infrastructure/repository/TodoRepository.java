@@ -1,5 +1,7 @@
 package cn.haiyinlong.smart.mirror.infrastructure.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ObjectUtils;
 
@@ -36,6 +38,7 @@ public class TodoRepository implements cn.haiyinlong.smart.mirror.domain.reposit
     public void save(final Todo todo) {
         final TodoEntity todoEntity = TodoToTodoEntityConverter.INSTANCE.convert(todo);
         todoMapper.insert(todoEntity);
+        todo.setId(todoEntity.getId());
     }
 
     @Override
@@ -45,6 +48,12 @@ public class TodoRepository implements cn.haiyinlong.smart.mirror.domain.reposit
             return TodoEntityToTodoConverter.INSTANCE.convert(todoEntity);
         }
         return null;
+    }
+
+    @Override
+    public List<Todo> queryAll() {
+        List<TodoEntity> todoEntityList = todoMapper.queryAll();
+        return TodoEntityToTodoConverter.INSTANCE.convert(todoEntityList);
     }
 
     @Override

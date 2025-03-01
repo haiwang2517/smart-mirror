@@ -17,7 +17,7 @@ public class TodoEntity {
      *
      */
     @TableId
-    private Integer id;
+    private Long id;
 
     private String summary;
 
