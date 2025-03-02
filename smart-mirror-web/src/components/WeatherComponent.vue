@@ -191,13 +191,12 @@ export default {
 
 <style scoped>
 .weather-component {
-    color: white;
     font-family: Arial, sans-serif;
 }
 
 .current-weather {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 10px;
 }
@@ -234,7 +233,7 @@ export default {
 
 .date,
 .lunar-date {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .weekly-forecast {
@@ -252,17 +251,15 @@ export default {
     align-items: center;
 }
 
-.forecast-day-name {
-    font-size: 16px;
+.forecast-day-name,
+.temp-range {
+    font-size: 30px;
 }
 
 .forecast-icon {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
     margin: 10px auto;
 }
 
-.temp-range {
-    font-size: 14px;
-}
 </style>

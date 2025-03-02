@@ -46,7 +46,8 @@ body {
   padding: 0;
   overflow: hidden;
   background-color: black;
-  color: white;
+  color: lightslategrey;
+  cursor: none; 
 }
 
 #app {

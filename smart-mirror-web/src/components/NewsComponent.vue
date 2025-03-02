@@ -13,7 +13,7 @@ export default {
 
 <style scoped>
 .news {
-    width: 70%;
+    width: 60%;
     height: calc(100vh - 50px);
     float: left;
     box-sizing: border-box;
