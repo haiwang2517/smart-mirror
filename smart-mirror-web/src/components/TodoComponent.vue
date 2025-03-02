@@ -34,7 +34,7 @@ export default {
     },
     methods: {
         fetchTasks() {
-            const apiUrl = 'http://localhost:5091/api/tasks';
+            const apiUrl = '/api/tasks';
 
             axios.get(apiUrl)
                 .then(response => {
